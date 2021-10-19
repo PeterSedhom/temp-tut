@@ -18,6 +18,22 @@ app.get('/api/products/:productID',(req,res)=>{
     const singleProduct = products.find((product)=> product.id === Number(productID))
       res.json(singleProduct)
 })
+app.get('/api/v1/query',(req,res) => {
+    const {search,limit} = req.query
+    let sortedProducts = [...products]
+    if(search){
+        sortedProducts = sortedProducts.filter((product) =>{
+            return product.name.startsWith(search)
+        })
+    }
+    if(limit){
+        sortedProducts = sortedProducts.slice(0,Number(limit))
+    }
+    if(sortedProducts.length<1){
+       return res.status(200).json({data:[]})
+    }
+    res.status(200).json(sortedProducts)
+})
 //app.all('*',()=>{
 //    res.status(404).send("not found")
 //})
