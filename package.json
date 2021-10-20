@@ -9,7 +9,7 @@
     "nodemon": "^2.0.13"
   },
   "scripts": {
-    "start": "node http.js",
+    "start": "node express.js",
     "dev": "nodemon http.js"
   },
   "keywords": [],

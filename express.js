@@ -1,7 +1,10 @@
 const express = require('express')
+const authorize = require('./authorize')
 const app = express()
 const {products} = require('./data')
+const logger = require('./logger')
 
+app.use('/',[authorize,logger])
 app.get('/',(req,res)=>{
     res.send('<h1>Home Page</h1> <a href="/api/products">products</a>')
 })
