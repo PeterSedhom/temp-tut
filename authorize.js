@@ -4,7 +4,7 @@ const authorize = (req,res,next) => {
         req.user = {name:'john',id:3}
         next()
     }else{
-        res.status(401).send("unauthorized")
+        res.status(401).send("unauthorizedd")
     }
 }
 module.exports=authorize
